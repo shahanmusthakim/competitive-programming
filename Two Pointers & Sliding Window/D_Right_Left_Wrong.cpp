@@ -11,35 +11,34 @@ int main()
     {
         int N;
         cin >> N;
-        vector<long long> v(N + 1), pref(N + 1, 0);
-
-        for (int i = 1; i <= N; i++)
+        vector<long long> v(N), pre(N + 1);
+        for (int i = 0; i < N; i++)
             cin >> v[i];
+        for (int i = 0; i < N; ++i)
+        {
+            pre[i + 1] = v[i] + pre[i];
+        }
         string S;
         cin >> S;
-        for (int i = 1; i <= N; ++i)
-        {
-            pref[i] = pref[i - 1] + v[i];
-        }
-        int i = 0, j = N - 1;
+        int l = 0, r = N - 1;
         long long ans = 0;
-        while (i < j)
+        while (l < r)
         {
-            if (S[i] == 'L' && S[j] == 'R')
+            if (S[l] == 'L' && S[r] == 'R')
             {
-                ans += (pref[j + 1] - pref[i]);
-                i++;
-                j--;
+                ans += pre[r + 1] - pre[l];
+                l++;
+                r--;
             }
-            else
+            else if (S[l] != 'L')
             {
-                if (S[i] != 'L')
-                    i++;
-                else if (S[j] != 'R')
-                    j--;
+                l++;
+            }
+            else if (S[r] != 'R')
+            {
+                r--;
             }
         }
-
         cout << ans << '\n';
     }
 
