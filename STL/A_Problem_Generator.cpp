@@ -9,24 +9,24 @@ int main()
     cin >> T;
     while (T--)
     {
-        map<char, int> m;
-        for (char i = 'A'; i <= 'G'; i++)
-            m[i] = 0;
         int N, M;
         cin >> N >> M;
         string S;
         cin >> S;
+        map<char, int> m;
         for (int i = 0; i < N; i++)
-            m[S[i]]++;
-        int ans = 0;
-        for (auto x : m)
         {
-            if (x.second < M)
+            m[S[i]]++;
+        }
+        int ans = 0;
+        for (char i = 'A'; i <= 'G'; i++)
+        {
+            if (m[i] < M)
             {
-                ans += M - x.second;
+                ans += M - m[i];
             }
         }
-        cout << ans << '\n';
+        cout << ans << endl;
     }
 
     return 0;
