@@ -1,0 +1,19 @@
+class Solution {
+    bool chack(string S,char ch){
+        for(int i=0;i<S.size();i++){
+            if(S[i]==ch){
+                return true;
+            }
+        }
+        return false;
+    }
+public:
+    vector<int> findWordsContaining(vector<string>& words, char x) {
+        vector<int>ans;
+        for(int i=0;i<words.size();i++){
+            string S=words[i];
+            if(chack(S,x))ans.push_back(i);
+        }
+        return ans;
+    }
+};
