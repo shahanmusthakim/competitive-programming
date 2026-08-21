@@ -1,0 +1,11 @@
+class Solution {
+public:
+    string generateTheString(int n) {
+        string S;
+        for(int i=1;i<n;i++){
+            S.push_back('a');
+        }
+        (n%2==0)?S.push_back('b') : S.push_back('a');
+        return S;
+    }
+};
