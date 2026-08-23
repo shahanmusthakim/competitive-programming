@@ -1,0 +1,8 @@
+class Solution {
+public:
+    bool isSameAfterReversals(int num) {
+        string S=to_string(num);
+        if(S.back()=='0' && S.size()!=1)return false;
+        else return true;
+    }
+};
