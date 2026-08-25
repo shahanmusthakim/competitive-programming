@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int check(string s) {
+        stringstream ss(s);
+        string tmp;
+        int cnt = 0;
+        while (ss >> tmp) {
+            cnt++;
+        }
+        return cnt;
+    }
+
+    int mostWordsFound(vector<string>& sentences) {
+        int ans = 0, n = sentences.size();
+        for (int i = 0; i < n; i++) {
+            string S = sentences[i];
+            ans = max(check(S), ans);
+        }
+        return ans;
+    }
+};
