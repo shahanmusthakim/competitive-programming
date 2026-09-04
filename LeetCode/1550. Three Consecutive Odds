@@ -1,0 +1,17 @@
+class Solution {
+public:
+    bool ok(int nbr) {
+        if (nbr % 2 != 0)
+            return true;
+        else
+            return false;
+    }
+    bool threeConsecutiveOdds(vector<int>& arr) {
+        int n = arr.size();
+        for (int i = 1; i < n - 1; i++) {
+            if (ok(arr[i]) && ok(arr[i - 1]) && ok(arr[i + 1]))
+                return true;
+        }
+        return false;
+    }
+};
