@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool equalFrequency(string word) {
+        int n=word.size();
+        map<char,int>m;
+        map<int,int>ans;
+        for(int i=0;i<n;i++){
+            m[word[i]]++;
+        }
+        if(m.size()==1)return true;
+        for(auto x :m){
+            ans[x.second]++;
+        }
+        if(ans.size()==1 && ans.begin()->first==1)return true;
+        if(ans.size()==2){
+            auto it1 = ans.begin();
+            auto it2 = ans.rbegin();
+            if(it1->first == 1 && it1->second == 1) return true;
+            if(it2->first - it1->first == 1 && it2->second == 1) return true;
+        }
+        return false;
+    }
+};
